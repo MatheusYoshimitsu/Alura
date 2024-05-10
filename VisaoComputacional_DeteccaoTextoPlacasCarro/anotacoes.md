@@ -44,7 +44,7 @@ Diferença entre o fechamento e da imagem de entrada. Auxilia na detecção de p
 **4. TOP HAT:** Destacar regiões claras em fundos escuros  
 **5. BLACK HAT:** Destacar regiões escuras em fundos claros  
 
-# Aula 9
+# Aula 9 e 10
 
 ## Detecção de borda de Canny
 1. Retirar ruídos
@@ -53,3 +53,7 @@ Diferença entre o fechamento e da imagem de entrada. Auxilia na detecção de p
 4. Novos limiares para encontrar as bordas verdadeiras e falsas. 
 * Bordas fora dos limiares, mas que estejam conectadas com bordas dentro dos limiares, são consideradas como verdadeiras. Da mesma forma, bordas dentro destes limiares, mas sem conexões, são consideradas como falsas e, portanto, descartadas.
 * Nesta etapa, ruídos pequenos também serão removidos. O resultado seriam bordas grossas na imagem.
+
+## Aproximação de contornos
+
+Podemos fazer aproximação de contornos para polígonos. No exemplo para detectar uma placa (retângulo), definimos um epsilon com margem de erro de 2%, em seguida, fizemos um contorno de 4 lados e convexo, a fim de encontrar apenas as bordas que se pareçam com retângulos.
