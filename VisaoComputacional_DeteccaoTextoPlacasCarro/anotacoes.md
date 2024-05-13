@@ -1,3 +1,5 @@
+Anotações feitas a fim de complementar o entendimento de parte do conteúdo, lembrando que há a possibilidade de simplesmente rever as aulas e outros materiais do curso. Este arquivo markdown **não** tem a finalidade de ser um relatório do curso, afinal, outras explicações sobre os conteúdos aprendidos também podem ser encontrados nos comentários dos arquivos de código.
+
 # Aula 6 - Erosão e Dilatação
 
 ### Kernel
@@ -57,3 +59,12 @@ Diferença entre o fechamento e da imagem de entrada. Auxilia na detecção de p
 ## Aproximação de contornos
 
 Podemos fazer aproximação de contornos para polígonos. No exemplo para detectar uma placa (retângulo), definimos um epsilon com margem de erro de 2%, em seguida, fizemos um contorno de 4 lados e convexo, a fim de encontrar apenas as bordas que se pareçam com retângulos.
+
+## Aula 13 - Contraste
+
+### REVER SOBEL E CONVOLUÇÃO
+
+### Sobel
+
+1. "The Sobel Operator is a discrete differentiation operator. It computes an approximation of the gradient of an image intensity function"
+2. "The Sobel Operator combines Gaussian smoothing and differentiation."

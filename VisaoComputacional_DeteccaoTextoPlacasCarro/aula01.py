@@ -1,9 +1,9 @@
 # Aula 1: Comecando identificacao de texto em imagens
-import cv2;
-import pytesseract as pt;
+import cv2
+import pytesseract as pt
 #from google.colab.patches import cv2_imshow
 
-image1 = cv2.imread('/mnt/c/Users/matheus.lanzo/OneDrive - Usebens Seguradora S A/Área de Trabalho/Alura/VisaoComputacional_DeteccaoTextoPlacasCarro/imagens/trecho_livro.png')
+image1 = cv2.imread('imagens/trecho_livro.png')
 
 #cv2_imshow(image)
 cv2.imshow('Image 1',image1)

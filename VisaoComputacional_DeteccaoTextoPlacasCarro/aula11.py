@@ -21,7 +21,7 @@ for contorno in contornos:
         break
 
 x, y, w, h = cv2.boundingRect(localizacao)
-print(x, y, w, h)
+# print(x, y, w, h)
 placa = gray[y:y+h, x:x+w]
 cv2.imshow('placa', placa)
 
@@ -36,10 +36,13 @@ cv2.imshow('erosao', erosao)
 config = '--tessdata-dir /home/lanzo/tessdata --psm 6'
 lang = 'por'
 text = pt.image_to_string(erosao, lang, config)
-print(text)
+# print(text)
 
 # Apenas placas MERCOSUL!
 extracted_text = re.search('\w{3}\d{1}\w{1}\d{2}', text)
-print(extracted_text)
+#print(extracted_text)
+print('Texto Detectado:', extracted_text.group(0))
+cv2.imwrite('imagem1_apos_5_tecnicas_pre_processamento.png', erosao)
+
 cv2.waitKey()
 cv2.destroyAllWindows()

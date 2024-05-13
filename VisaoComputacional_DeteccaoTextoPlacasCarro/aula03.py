@@ -1,7 +1,7 @@
 # Aula 3: Limiarizacao simples
 import cv2
 
-imagem = cv2.imread('/mnt/c/Users/matheus.lanzo/OneDrive - Usebens Seguradora S A/Área de Trabalho/Alura/VisaoComputacional_DeteccaoTextoPlacasCarro/imagens/placa_carro1.png')
+imagem = cv2.imread('imagens/placa_carro1.png')
 imagem = cv2.cvtColor(imagem, cv2.COLOR_BGR2GRAY) # converte a imagem para cinza
 
 # Teste 0

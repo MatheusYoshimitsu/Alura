@@ -2,7 +2,7 @@
 import cv2
 
 # Importa a imagem
-image = cv2.imread('/mnt/c/Users/matheus.lanzo/OneDrive - Usebens Seguradora S A/Área de Trabalho/Alura/VisaoComputacional_DeteccaoTextoPlacasCarro/imagens/placa_carro1.png')
+image = cv2.imread('imagens/placa_carro1.png')
 # Transforma em cinza
 image = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
 # Aplica a limiarizacao de Otsu

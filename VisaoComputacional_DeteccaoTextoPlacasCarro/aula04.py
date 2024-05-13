@@ -1,7 +1,7 @@
 # Aula 4: Limiarizacao adaptativa
 import cv2
 
-image = cv2.imread('/mnt/c/Users/matheus.lanzo/OneDrive - Usebens Seguradora S A/Área de Trabalho/Alura/VisaoComputacional_DeteccaoTextoPlacasCarro/imagens/placa_carro1.png')
+image = cv2.imread('imagens/placa_carro1.png')
 image = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
 
 # PELA MEDIA

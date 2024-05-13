@@ -3,7 +3,7 @@ import cv2
 import pytesseract as pt
 #tesseract --help-psm
 
-image1 = cv2.imread('/mnt/c/Users/matheus.lanzo/OneDrive - Usebens Seguradora S A/Área de Trabalho/Alura/VisaoComputacional_DeteccaoTextoPlacasCarro/imagens/placa_carro1.png')
+image1 = cv2.imread('imagens/placa_carro1.png')
 
 # indica o diretorio da configuracao e o modo desejado
 config = '--tessdata-dir /home/lanzo/tessdata --psm 6'
