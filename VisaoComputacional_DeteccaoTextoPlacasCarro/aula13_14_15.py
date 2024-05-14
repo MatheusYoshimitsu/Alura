@@ -74,6 +74,7 @@ for contour in contours:
         cv2.imshow('plate', license_plate)
         cv2.imshow('interest region', interest_region)
 
+# Se atentar ao nome de usuario em --tessdata-dir
 text = pt.image_to_string(interest_region, lang='por',  config='--tessdata-dir /home/lanzo/tessdata --psm 6')
 print(text)
 
