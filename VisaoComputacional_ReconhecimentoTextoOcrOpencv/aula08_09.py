@@ -1,4 +1,4 @@
-# Aula 09 - Fontes
+# Aula 08 - Fontes
 import cv2
 import numpy as np
 import pytesseract as pt
@@ -17,7 +17,7 @@ print(result)
 min_conf = 40
 font = 'CursoAlura-TextRecognize/Imagens/calibri.ttf'
 
-# Aula 10 - Funcao para fontes
+# Aula 09 - Funcao para fontes
 
 def bounding_box(result, img, color = (255, 100, 0)):
     x = result['left'][i]

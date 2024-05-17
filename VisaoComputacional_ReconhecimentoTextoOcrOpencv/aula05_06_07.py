@@ -16,7 +16,7 @@ print(result)
 
 min_conf = 40
 
-# Aula 07 - Bouding Box (caixa delimitadora)
+# Aula 06 - Bouding Box (caixa delimitadora)
 
 def bounding_box(result, img, color = (255, 100, 0)):
     x = result['left'][i]
@@ -38,7 +38,7 @@ len(result['text'])
 
 # cv2.imshow('copy image', copy_img)
 
-# Aula 08 - Caixa e Texto
+# Aula 07 - Caixa e Texto
 
 copy_img = rgb.copy()
 for i in range(len(result['text'])):

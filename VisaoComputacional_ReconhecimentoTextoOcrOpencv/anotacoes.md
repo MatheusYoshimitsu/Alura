@@ -73,3 +73,30 @@ Exemplo:
 ```bash  
 wget -O ./tessdata/osd.traineddata https://github.com/tesseract-ocr/tessdata/raw/main/osd.traineddata
 ```
+
+## Aula 11 - Cenários Naturais
+
+### Métricas de Avaliação
+
+![Metricas de Avaliacao](https://www.researchgate.net/publication/336402347/figure/fig3/AS:812472659349505@1570719985505/Calculation-of-Precision-Recall-and-Accuracy-in-the-confusion-matrix.ppm)
+
+* Verdadeiros positivos, verdadeiros negativos, falsos positivos e falsos negativos
+* Acurácia: proporção de acertos em relação a todas as previsões realizadas.
+* Precisão: proporção de VP por VP e FP
+* Sensibilidade: proporção de VP por VP e FN
+
+* *Taxa de Verdadeiros Positivos e Taxa de Verdadeiros Negativos podem ser calculadas usando matriz de confusão*
+
+## Aula Extra - Curva ROC (Receiving Operating Characteristic Curve)
+
+Também chamada de Curva Característica de Operação do Receptor, serve para avaliar modelos de classificação binária.
+
+* **Area Under the Curve (AUC):** quanto mais perto de 1, melhor o desempenho de classificação
+
+O ponto de corte é de extrema importância para o classificador.
+
+Para mais detalhes: <https://cursos.alura.com.br/extra/alura-mais/curva-roc-c1465>
+
+## Finalização do curso
+
+Há outros OCRs disponíveis, entre eles, o Keras OCR e Easy OCR. Em uma aula do Alura+, é possível conferir um pouco sobre o Easy OCR, que tem suporte a mais de 80 idiomas e pode produzir resultados sem pré-processamento, mais interessantes que o Tesseract.

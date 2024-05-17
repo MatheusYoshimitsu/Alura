@@ -1,12 +1,12 @@
-# Aula 03 em anotacoes.md
-# Exercicio - Aplicando o PSM
-import cv2
+from PIL import Image
+import matplotlib.pyplot as plt
 import pytesseract as pt
 
-img = cv2.imread('CursoAlura-TextRecognize/Atividades/Aula2-Nota_Fiscal.jpg')
-rgb = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
-cv2.imshow('RGB', rgb)
+img = Image.open('CursoAlura-TextRecognize/Imagens/Aula2-livro.png')
+plt.imshow(img)
+print(pt.image_to_osd(img))
 
-config_tesseract = '--tessdata-dir /home/lanzo/tessdata --psm 4' # Resposta correta, porem o output nao esta correto
-text = pt.image_to_string(rgb, lang='por', config=config_tesseract)
-print(text)
+# Exemplo de codigo para rotacionar a imagem
+plt.imshow(img.rotate(45))
+
+plt.waitforbuttonpress()
