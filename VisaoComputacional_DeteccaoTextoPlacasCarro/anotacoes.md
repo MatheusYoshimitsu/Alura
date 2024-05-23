@@ -1,32 +1,38 @@
-Anotações feitas a fim de complementar o entendimento de parte do conteúdo, lembrando que há a possibilidade de simplesmente rever as aulas e outros materiais do curso. Este arquivo markdown **não** tem a finalidade de ser um relatório do curso, afinal, outras explicações sobre os conteúdos aprendidos também podem ser encontrados nos comentários dos arquivos de código.
-
 # Aula 6 - Erosão e Dilatação
 
-### Kernel
+Anotações feitas a fim de complementar o entendimento de parte do conteúdo, lembrando que há a possibilidade de simplesmente rever as aulas e outros materiais do curso. Este arquivo markdown **não** tem a finalidade de ser um relatório do curso, afinal, outras explicações sobre os conteúdos aprendidos também podem ser encontrados nos comentários dos arquivos de código.
+
+## Kernel
+
 Máscara formada por uma matriz de valores, podendo ser esta de diversas formas, commo retangular, elíptica ou até mesmo em cruz.  
 É possível atribuir diferentes valores para o kernel, sendo possível fazer outras operações com os pixels da imagem, algo chamado de **convolução**, retornando uma figura transformada.
 
-## Erosão:
+## Erosão
+
 Diminui a área branca da imagem.  
 Útil para remover ruídos brancos pequenos, separar dois objetos conectados, etc.  
-Considera que caso ao menos um pixel da vizinhança não seja branco, transforma o pixel em si em preto. 
+Considera que caso ao menos um pixel da vizinhança não seja branco, transforma o pixel em si em preto.
 
 ## Dilatação
-Expande a área branca da imagem.
-Oposto da erosão. Considera que caso ao menos um pixel da vizinhança não seja preto, transforma o pixel em si em branco. 
 
-# Aula 7 - Abertura e Fechamento
+Expande a área branca da imagem.
+Oposto da erosão. Considera que caso ao menos um pixel da vizinhança não seja preto, transforma o pixel em si em branco.
+
+## Aula 7 - Abertura e Fechamento
+
 A espessura da imagem original é mantida nos dois casos.
 
 ## Abertura
+
 Erosão seguida de dilatação.  
 Serve para retirar ruídos do lado de fora do contorno branco.
 
 ## Fechamento
+
 Dilatação seguida de erosão.  
 Serve para retirar ruídos do lado de dentro do contorno branco.
 
-# Aula 8 - Outras transformações
+## Aula 8 - Outras transformações
 
 ## Gradiente morfológico
 
@@ -46,13 +52,15 @@ Diferença entre o fechamento e da imagem de entrada. Auxilia na detecção de p
 **4. TOP HAT:** Destacar regiões claras em fundos escuros  
 **5. BLACK HAT:** Destacar regiões escuras em fundos claros  
 
-# Aula 9 e 10
+## Aula 9 e 10
 
 ## Detecção de borda de Canny
+
 1. Retirar ruídos
 2. Encontrar a intensidade de gradiente usando Sobel
 3. Retirar ruídos que não pertençam à borda. O resultado será uma imagem binária com bordas finas
-4. Novos limiares para encontrar as bordas verdadeiras e falsas. 
+4. Novos limiares para encontrar as bordas verdadeiras e falsas.
+
 * Bordas fora dos limiares, mas que estejam conectadas com bordas dentro dos limiares, são consideradas como verdadeiras. Da mesma forma, bordas dentro destes limiares, mas sem conexões, são consideradas como falsas e, portanto, descartadas.
 * Nesta etapa, ruídos pequenos também serão removidos. O resultado seriam bordas grossas na imagem.
 
