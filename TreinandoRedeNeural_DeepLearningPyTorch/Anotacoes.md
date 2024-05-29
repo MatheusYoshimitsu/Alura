@@ -18,6 +18,48 @@ Por enquanto, precisamos de 3 principais elementos: as classes a serem analisada
 
 > Processos como a padronização e a normalização levam todos os dados para uma escala similar, enquanto mantêm as suas distribuições originais
 
+## Forward e Backpropagation
+
+* Definições vistas de forma melhor nos vídeos, mas as aplicações práticas se resumem a aplicar uma função (forward) e ajustá-la na próxima iteração (backpropagation).
+
+## Bacth
+
+Quantidade de amostras em uma iteração. Seu tamanho influencia diretamente o comportamento da convergência.
+
+* Batch estocástico: uma única amostra
+* Mini-batch: subconjunto do treino
+* Batch: conjunto do treino completo
+
+## Época
+
+Quanto todas as amostras do conjunto de treino foram vistas pelo modelo.
+
+Posso dizer então que uma época é na verdade, uma iteração de todas as iterações?
+
+```py
+# Epochs
+for i in range(num_epochs):
+
+    # Iterations
+    for batch in train_data:
+
+        # Forward
+        ypred = net(batch)
+        loss = criterion(ypred, y)
+        
+        # Backpropagation
+        loss.backward()
+        optimizer.step()
+```
+
+## DataLoader
+
+É um dos destaques do PyTorch. Tem um ótimo gerenciamento de carregamentos de dados para o treinamento de RNs:
+
+* Separação dos dados em batches
+* Embaralhamento dos dados
+* Carrega batches em paralelo usando threads
+
 ### Importante
 
 * Conferir os notebooks da aula, eles têm mais informações descritas além do código feito em aula. Podem ajudar a complementar os comentários dos exercícios feitos
