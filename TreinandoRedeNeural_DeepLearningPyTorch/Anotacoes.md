@@ -60,8 +60,14 @@ for i in range(num_epochs):
 * Embaralhamento dos dados
 * Carrega batches em paralelo usando threads
 
+## Métricas de qualidade
+
+Como o projeto final se deu por uma reta de regressão linear, não é possível usar medidas como acurácia para saber o quão bom o modelo está. No entanto, podemos usar outros tipos de métricas, como por exemplo, analisando as distâncias dos pontos e linha.
+
 ### Importante
 
 * Conferir os notebooks da aula, eles têm mais informações descritas além do código feito em aula. Podem ajudar a complementar os comentários dos exercícios feitos
 
 * Na dúvida, usa o Adam $\rightarrow$ um dos melhores otimizadores adaptativos
+
+* Devido à lentidão de performance entre CPU vs GPU, o projeto final será feito no Google Colab
