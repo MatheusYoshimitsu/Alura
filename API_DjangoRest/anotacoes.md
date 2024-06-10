@@ -76,3 +76,21 @@ python3 manage.py migrate
 ```bash
 python3 manage.py createsuperuser
 ```
+
+## Métodos
+
+### PUT x PATCH
+
+O método PUT faz uma atualização em toda a entidade, enquanto o PATCH faz a atualização apenas em um subconjunto especícifo desta entidade.
+
+### GET, POST E DELETE
+
+Autoexplicativos.
+
+---
+No geral, para se fazer criar novos CRUDs, precisamos:
+
+1. Criar os models
+2. Criar os serializers
+3. Criar as views
+4. Atualizar as URLs
