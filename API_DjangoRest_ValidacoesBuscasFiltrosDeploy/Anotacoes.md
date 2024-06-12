@@ -65,3 +65,13 @@ Em seguida, devemos fazer as alterações necessárias na View também.
 
 1. Precisamos ter certeza que todas as dependências estão instaladas
 2. Precisamos subir o projeto no Github
+
+```bash
+git init
+git branch -m main
+git add .
+git commit -m "First commit"
+git 
+```
+
+* Rever a [aula de Deploy](https://cursos.alura.com.br/course/api-django-3-validacoes-buscas-filtros-deploy/task/81293) na Alura
