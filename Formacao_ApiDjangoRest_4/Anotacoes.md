@@ -4,19 +4,19 @@
 
 ### Criando um novo ambiente virtual
 
-```python
+```bash
 python3 -m venv ./venv
 ```
 
 ### Ativando o ambiente virtual
 
-```python
+```bash
 source venv/bin/activate
 ```
 
 ### Instalando as bibliotecas necessárias
 
-```python
+```bash
 pip install asgiref Django djangorestframework Faker python-dateutil pytz six sqlparse text-unidecode validate-docbr django-cors-headers pillow
 # Para instalar a partir de um arquivo requirements
 pip install -r requirements.txt
@@ -30,20 +30,20 @@ pip freeze > requirements.txt
 
 ### Rodar as migrações
 
-```python
+```bash
 python3 manage.py makemigrations
 python3 manage.py migrate
 ```
 
 ### Carregando dados iniciais
 
-```python
+```bash
 python3 seed.py
 ```
 
 ### Subindo o servidor
 
-```python
+```bash
 python3 manage.py runserver
 ```
 
@@ -303,3 +303,152 @@ REST_FRAMEWORK = {
 Nota: ao fazer isso, perdemos a parte visual do Django no navegador.
 
 ## Aula 07 - Cenário de teste
+
+* Criar uma pasta _test_
+* Dentro desta pasta, criar um arquivo _\_\_init\_\_.py_
+* Criar arquivo _testes\_cursos.py_
+
+Caso esteja usando o Redis, é importante se lembrar de iniciá-lo antes de fazer os testes.
+
+No terminal:
+
+```bash
+sudo systemctl start redis-server
+```
+
+Em  _testes\_cursos.py_:
+
+```python
+from rest_framework.test import APITestCase
+from rest_framework import status
+from escola.models import Curso
+from django.urls import reverse
+
+class CursosTestCase(APITestCase):
+
+    def setUp(self):
+        self.list_url = reverse('Cursos-list') # Devemos passar o basename definido em urls.py
+        self.curso_1 = Curso.objects.create(
+            codigo_curso='CTT1', descricao='Curso teste 1', nivel='B'
+        )
+        self.curso_2 = Curso.objects.create(
+            codigo_curso='CTT2', descricao='Curso teste 2', nivel='A'
+        )
+    # def test_falhador(self):
+    #     self.fail('Teste falhou propositalmente. Ta safe')
+
+    def test_requisicao_get_para_listar_curso(self):
+        """Teste para verificar a requisicao GET para listar cursos"""
+        response = self.client.get(self.list_url)
+        self.assertEquals(response.status_code, status.HTTP_200_OK)
+
+    def test_requisicao_post_para_criar_curso(self):
+        """Teste para verificar a requisicao POST para criar cursos"""
+        data = {
+            'codigo_curso': 'CTT3',
+            'descricao': 'Curso teste 3',
+            'nivel': 'A'
+        }
+        response = self.client.post(self.list_url, data=data)
+        self.assertEquals(response.status_code, status.HTTP_201_CREATED)
+```
+
+## Aula 08 - Testando PUT e DELETE
+
+Supondo que não queremos mais permitir que seja possível deletar um curso:
+
+Em _views.py_:
+
+```python
+class CursosViewSet(viewsets.ModelViewSet):
+    # (...)
+    serializer_class = CursoSerializer
+    http_method_names = ['get', 'post', 'put', 'path']
+    # (...)
+```
+
+Em  _testes\_cursos.py_:
+
+```python
+class CursosTestCase(APITestCase):
+    # (...)
+    def test_requisicao_delete_para_deletar_curso(self):
+        """Teste para verificar a requisicao DELETE nao permitida para deletar cursos"""
+        response = self.client.delete('/cursos/1/')
+        self.assertEquals(response.status_code, status.HTTP_405_METHOD_NOT_ALLOWED)
+
+    def test_requisicao_put_para_atualizar_curso(self):
+        """Teste para verificar requisicao PUT para atualizar um curso"""
+        data = {
+            'codigo_curso': 'CTT1',
+            'descricao': 'Curso teste 1 atualizado',
+            'nivel': 'I'
+        }
+        response = self.client.put('/cursos/1/', data=data)
+        self.assertAlmostEquals(response.status_code, status.HTTP_200_OK)
+```
+
+Estes não são os métodos mais indicados para se fazer testes em uma API, já que esta é um tópico muito mais denso do que parece. Seria necessário todo um curso sobre testes, ao invés de apenas duas aulas curtas, no entanto, esta é uma forma simples de mostrar como funcionam testes no Django Rest.
+
+## Aula 09 - Pensando em Segurança
+
+Não queremos que nossa URL de admin seja facilmente acessada. Podemos então fazer algumas alterações.
+
+Em _urls.py_:
+
+```python
+urlpatterns = [
+    path('controle-geral/', admin.site.urls),
+    # (...)  
+] # (...)
+```
+
+No entanto, a API ainda devolve nosso código de _urls.py_. Portanto devemos desativar o DEBUG em _settings.py_.
+
+Em _settings.py_:
+
+```python
+DEBUG = False
+
+ALLOWED_HOSTS = ['localhost']
+```
+
+## Aula 10 - Honeypot
+
+Registrando tentativas de acesso não autorizado.
+
+Instalando a dependência:
+
+* **A BIBLIOTECA NAO ESTA FUNCIONANDO COM O DJANGO 5**
+
+```bash
+pip install django-admin-honeypot
+```
+
+Em _settings.py_:
+
+```python
+INSTALLED_APPS = [
+    # (...)
+    'admin_honeypot',
+]
+```
+
+Em _urls.py_:
+
+```python
+urlpatterns = [
+    path('admin/', include('admin_honeypot.urls', namespace='admin_honeypot')),
+    # (...)
+] # (...)
+```
+
+[Correção de um aluno da Alura](https://cursos.alura.com.br/forum/topico-sugestao-incluindo-honeypot-correcao-para-compatibilidade-com-django-4-2-2-307367)
+
+Fazendo as migrações pendentes:
+
+```bash
+python3 manage.py migrate
+```
+
+Ao subir o servidor, podemos tentar fazer um login na URL fake _/admin_. Esta tentativa poderá ser vista na URL correta de admin _/controle-geral_.

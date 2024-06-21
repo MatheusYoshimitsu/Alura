@@ -21,7 +21,7 @@ pip install markdown
 4. Criar projeto setup, para manter a configuração da aplicação
 
 ```bash
-django-admin startproject setup .
+django-admin startproject setup
 ```
 
 5. Criar a aplicação
